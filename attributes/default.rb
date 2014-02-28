@@ -12,3 +12,4 @@ default[:authorization][:sudo] = {
   :groups => ["wheel", "sysadmin"],
 }
 default['authorization']['sudo']['agent_forwarding'] = true
+default['authorization']['sudo']['sudoers_defaults'] = ['env_reset']
