@@ -21,6 +21,7 @@ when "arch"
     action :install
   end
   package "fakeroot"
+  package "subversion"
   chef_gem "digest"
   include_recipe "git"
   pacman_aur "omnibus-chef" do
@@ -37,7 +38,7 @@ include_recipe "emacs"
 
 users_manage "sysadmin" do
   group_id 2300
-  action [ :create ]
+  action [ :create, :modify ]
 end
 
 include_recipe "oh-my-zsh"
