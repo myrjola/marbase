@@ -11,3 +11,4 @@ end
 default[:authorization][:sudo] = {
   :groups => ["wheel", "sysadmin"],
 }
+default['authorization']['sudo']['agent_forwarding'] = true
