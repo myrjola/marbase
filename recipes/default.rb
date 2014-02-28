@@ -39,7 +39,7 @@ include_recipe "emacs"
 
 users_manage "sysadmin" do
   group_id 2300
-  action [ :create, :modify ]
+  action [ :create ]
 end
 
 include_recipe "oh-my-zsh"
