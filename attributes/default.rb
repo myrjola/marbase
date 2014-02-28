@@ -7,3 +7,7 @@ case node['platform']
 when "ubuntu","debian"
   default['emacs']['packages'] = ["emacs24-nox"]
 end
+
+default[:authorization][:sudo] = {
+  :groups => ["wheel", "sysadmin"],
+}

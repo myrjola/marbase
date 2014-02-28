@@ -30,6 +30,7 @@ when "arch"
 end
 
 include_recipe "users"
+include_recipe "sudo"
 include_recipe "openssh"
 include_recipe "git"
 include_recipe "mercurial"
