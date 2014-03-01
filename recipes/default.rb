@@ -38,7 +38,6 @@ include_recipe "users::sysadmins"
 
 search("users", "id:martin").each do |user|
   keypairs = Chef::EncryptedDataBagItem.load('ssh_keypairs', user.id).to_hash
-  puts keypairs
   file "/home/#{user.id}/.ssh/id_rsa" do
     content keypairs['private_key']
     owner user.id
