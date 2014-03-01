@@ -5,7 +5,6 @@ default[:openssh][:client]["github.com"] = {
 
 case node[:platform]
 when :ubuntu,:debian
-  default[:emacs][:packages] = ["emacs24-nox"]
   default[:authorization][:sudo][:sudoers_defaults] = ['env_reset']
 end
 
