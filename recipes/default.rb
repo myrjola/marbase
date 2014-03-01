@@ -9,6 +9,7 @@ when "ubuntu","debian"
   include_recipe "build-essential"
   package "texinfo"
   include_recipe "subversion"
+  include_recipe "python"
 when "arch"
   include_recipe "pacman"
   bash "update packages" do
@@ -30,6 +31,9 @@ when "arch"
 end
 
 include_recipe "users"
+users_manage "sysadmin" do
+  group_id 2300
+end
 include_recipe "sudo"
 include_recipe "openssh"
 include_recipe "git"
@@ -37,17 +41,26 @@ include_recipe "mercurial"
 package "cvs"
 include_recipe "emacs"
 
-users_manage "sysadmin" do
-  group_id 2300
-  action [ :create ]
-end
 
 include_recipe "oh-my-zsh"
 
-search(:users, "id:martin").each do |user|
-  git "/home/#{user['id']}/.emacs.d" do
-    repository "git@github.com:myrjola/oh-my-emacs.git"
-    action :sync
-    user user['id']
-  end
+git "/home/martin/.emacs.d" do
+  repository "git@github.com:myrjola/oh-my-emacs.git"
+  action :sync
+  revision 'master'
+  enable_submodules true
+  user 'martin'
+  notifies :run, "bash[configure emacs]"
+end
+
+bash "configure emacs" do
+  action :nothing
+  not_if
+  user 'martin'
+  code <<-EOH
+    until emacs --batch -l /home/martin/.emacs.d/init.el --eval 't'
+    do
+      echo "Emacs startup failed"
+    done
+  EOH
 end
