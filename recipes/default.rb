@@ -63,7 +63,7 @@ include_recipe "oh-my-zsh"
 git "/home/martin/.emacs.d" do
   repository "git@github.com:myrjola/oh-my-emacs.git"
   action :sync
-  revision 'master'
+  checkout_branch "master"
   enable_submodules true
   user 'martin'
   notifies :run, "bash[configure emacs]"
