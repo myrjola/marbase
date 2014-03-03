@@ -5,7 +5,7 @@ maintainer_email 'martin.yrjola@gmail.com'
 license          'CC'
 description      'Installs/Configures marbase'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.7'
+version          '0.1.8'
 
 depends 'oh-my-zsh'
 depends 'users'
@@ -19,3 +19,4 @@ depends 'mercurial'
 depends 'pacman'
 depends 'sudo'
 depends 'python'
+depends 'ssh_known_hosts'

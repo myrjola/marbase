@@ -1,8 +1,3 @@
-default[:openssh][:client]["github.com"] = {
-  "user_known_hosts_file" => "/dev/null",
-  "strict_host_key_checking" => "no"
-}
-
 case node[:platform]
 when :ubuntu,:debian
   default[:authorization][:sudo][:sudoers_defaults] = ['env_reset']
