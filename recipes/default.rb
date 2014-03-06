@@ -54,6 +54,7 @@ end
 
 include_recipe "sudo"
 include_recipe "openssh"
+include_recipe "openssh::iptables"
 include_recipe "git"
 include_recipe "mercurial"
 package "cvs"
@@ -82,3 +83,5 @@ bash "configure emacs" do
     done
   EOH
 end
+
+include_recipe "marbase::security"
