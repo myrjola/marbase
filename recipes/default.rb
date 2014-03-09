@@ -83,6 +83,6 @@ bash "configure emacs" do
   EOH
 end
 
-%w(vim htop autojump ack-grep).each { |pkg| package pgk }
+%w(vim htop autojump ack-grep).each { |pkg| package pkg }
 
 include_recipe "marbase::security"
